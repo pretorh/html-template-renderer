@@ -1,4 +1,5 @@
 var assert = require("assert");
+var fs = require("fs");
 
 var fsutils = require("../lib/fsutils");
 
@@ -20,6 +21,20 @@ describe("fsutils", function() {
         it("returns files in subdirectories", function() {
             var files = fsutils.filelist(__dirname + "/../sample/www", "html");
             assert.notEqual(-1, files.indexOf("sub/about.html"), "not found");
+        });
+    });
+
+    describe("ensureDirExists", function() {
+        beforeEach(function() {
+            var exists = fs.existsSync("test/made");
+            if (exists)
+                fs.rmdirSync("test/made");
+        });
+
+        it("can make a directory", function() {
+            fsutils.ensureDirExists("test/made");
+            var exists = fs.existsSync("test/made");
+            assert.equal(true, exists);
         });
     });
 });
