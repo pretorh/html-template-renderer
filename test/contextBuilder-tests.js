@@ -7,4 +7,9 @@ describe("contextBuilder", function() {
         var o = contextBuilder.build(__dirname + "/../sample/context/", ["index.json"]);
         assert.notStrictEqual(undefined, o.index);
     });
+
+    it("parse the json file", function() {
+        var o = contextBuilder.build(__dirname + "/../sample/context/", ["index.json"]);
+        assert.equal("John Doe", o.index.name);
+    });
 });
