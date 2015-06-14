@@ -10,5 +10,11 @@ describe("fs utils", function() {
             assert.equal("Array", files.constructor.name);
             assert.notEqual(-1, files.indexOf("index.html"));
         });
+
+        it("return only for given extension", function() {
+            var files = fsutils.filelist(__dirname + "/../sample/www", "html");
+            assert.equal(-1, files.indexOf("favicon.fake"), "found, but expected not to find");
+            assert.notEqual(-1, files.indexOf("index.html"), "not found");
+        });
     });
 });
