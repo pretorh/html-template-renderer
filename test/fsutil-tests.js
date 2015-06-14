@@ -51,6 +51,16 @@ describe("fsutils", function() {
         });
     });
 
+    describe("ensureDirForFileExists", function() {
+        beforeEach(removeTempTestDir);
+
+        it("makes the directory", function() {
+            fsutils.ensureDirForFileExists("test/made/abc.json");
+            var exists = fs.existsSync("test/made");
+            assert.equal(true, exists);
+        });
+    });
+
     function removeTempTestDir(done) {
         var exists = fs.existsSync("test/made");
         if (!exists)
