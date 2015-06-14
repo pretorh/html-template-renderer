@@ -37,5 +37,11 @@ describe("contextBuilder", function() {
             var result = contextBuilder.wrapInWithBaseOnFileName(file, "");
             assert.equal(false, /\.html/.test(result), "expected to not contain .html: " + result);
         });
+
+        it("use . for path separator", function() {
+            var file = "q/w/e/index.html";
+            var result = contextBuilder.wrapInWithBaseOnFileName(file, "");
+            assert.equal(true, /q\.w\.e\.index/.test(result), "expected path separator not found: " + result);
+        });
     });
 });
