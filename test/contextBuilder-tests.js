@@ -22,11 +22,11 @@ describe("contextBuilder", function() {
         });
     });
 
-    describe("wrapInWithBaseOnFileName", function() {
+    describe("wrapInWithBasedOnFileName", function() {
         it("returns handlebars wrapped text", function() {
             var file = "index.html";
             var inner = "text in middle";
-            var result = contextBuilder.wrapInWithBaseOnFileName(file, inner);
+            var result = contextBuilder.wrapInWithBasedOnFileName(file, inner);
             assert.equal(true, /^{{#with index/.test(result), "unexpected start: " + result);
             assert.equal(true, /}}text in middle{{/.test(result), "unexpected middle: " + result);
             assert.equal(true, /{{\/with}}$/.test(result), "unexpected end: " + result);
@@ -34,13 +34,13 @@ describe("contextBuilder", function() {
 
         it("does not include the file's extention", function() {
             var file = "index.html";
-            var result = contextBuilder.wrapInWithBaseOnFileName(file, "");
+            var result = contextBuilder.wrapInWithBasedOnFileName(file, "");
             assert.equal(false, /\.html/.test(result), "expected to not contain .html: " + result);
         });
 
         it("use . for path separator", function() {
             var file = "q/w/e/index.html";
-            var result = contextBuilder.wrapInWithBaseOnFileName(file, "");
+            var result = contextBuilder.wrapInWithBasedOnFileName(file, "");
             assert.equal(true, /q\.w\.e\.index/.test(result), "expected path separator not found: " + result);
         });
     });
