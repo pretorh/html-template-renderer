@@ -12,4 +12,11 @@ describe("contextBuilder", function() {
         var o = contextBuilder.build(__dirname + "/../sample/context/", ["index.json"]);
         assert.equal("John Doe", o.index.name);
     });
+
+    it("maps files recursively in sub objects", function() {
+        var o = contextBuilder.build(__dirname + "/../sample/context/", ["sub/more.json"]);
+        assert.notStrictEqual(undefined, o.sub);
+        assert.notStrictEqual(undefined, o.sub.more);
+        assert.equal(1, o.sub.more.key);
+    });
 });
