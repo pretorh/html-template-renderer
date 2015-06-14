@@ -16,5 +16,10 @@ describe("fs utils", function() {
             assert.equal(-1, files.indexOf("favicon.fake"), "found, but expected not to find");
             assert.notEqual(-1, files.indexOf("index.html"), "not found");
         });
+
+        it("returns files in subdirectories", function() {
+            var files = fsutils.filelist(__dirname + "/../sample/www", "html");
+            assert.notEqual(-1, files.indexOf("sub/about.html"), "not found");
+        });
     });
 });
