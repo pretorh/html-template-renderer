@@ -73,5 +73,11 @@ describe("contextBuilder", function() {
             assert.notStrictEqual(undefined, result.lastParent);
             assert.notStrictEqual(undefined, result.lastParent.index);
         });
+
+        it("returns the last name in the path", function() {
+            var o = {};
+            var result = contextBuilder.ensureObjectPathForFile(o, "q/w/e/index.html");
+            assert.equal("index", result.lastName);
+        });
     });
 });
