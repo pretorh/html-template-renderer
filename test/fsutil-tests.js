@@ -36,5 +36,10 @@ describe("fsutils", function() {
             var exists = fs.existsSync("test/made");
             assert.equal(true, exists);
         });
+
+        it("does not fail if it already exists", function() {
+            fsutils.ensureDirExists("test/made");
+            fsutils.ensureDirExists("test/made");       // this should not fail
+        });
     });
 });
