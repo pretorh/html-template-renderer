@@ -31,5 +31,11 @@ describe("contextBuilder", function() {
             assert.equal(true, /}}text in middle{{/.test(result), "unexpected middle: " + result);
             assert.equal(true, /{{\/with}}$/.test(result), "unexpected end: " + result);
         });
+
+        it("does not include the file's extention", function() {
+            var file = "index.html";
+            var result = contextBuilder.wrapInWithBaseOnFileName(file, "");
+            assert.equal(false, /\.html/.test(result), "expected to not contain .html: " + result);
+        });
     });
 });
