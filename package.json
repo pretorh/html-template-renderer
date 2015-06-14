@@ -1,0 +1,11 @@
+{
+  "name": "html-template-renderer",
+  "version": "0.0.0",
+  "description": "Render handlerbarjs templated html files into static html files",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Hendri Pretorius",
+  "license": "ISC"
+}
