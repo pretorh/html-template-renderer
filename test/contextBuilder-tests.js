@@ -70,14 +70,14 @@ describe("contextBuilder", function() {
         it("returns the last object's parent", function() {
             var o = {};
             var result = contextBuilder.ensureObjectPathForFile(o, "q/w/e/index.html");
-            assert.notStrictEqual(undefined, result.lastParent);
-            assert.notStrictEqual(undefined, result.lastParent.index);
+            assert.notStrictEqual(undefined, result.object);
+            assert.notStrictEqual(undefined, result.object.index);
         });
 
         it("returns the last name in the path", function() {
             var o = {};
             var result = contextBuilder.ensureObjectPathForFile(o, "q/w/e/index.html");
-            assert.equal("index", result.lastName);
+            assert.equal("index", result.name);
         });
     });
 });
