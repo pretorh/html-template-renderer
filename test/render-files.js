@@ -36,8 +36,8 @@ describe("render files", function() {
     }
     function render() {
         htRenderer.render({
-            templates: PATH + "www/",
-            context: PATH + "context/",
+            templateDir: PATH + "www/",
+            contextDir: PATH + "context/",
             dist: STATIC
         });
     }
