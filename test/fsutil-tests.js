@@ -41,5 +41,16 @@ describe("fsutils", function() {
             fsutils.ensureDirExists("test/made");
             fsutils.ensureDirExists("test/made");       // this should not fail
         });
+
+        it("fails if the item is a file", function() {
+            var errored = false;
+            try {
+                // this is a file, so should fail
+                fsutils.ensureDirExists("index.js");
+            } catch (e) {
+                errored = true;
+            }
+            assert.equal(true, errored);
+        });
     });
 });
