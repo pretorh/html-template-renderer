@@ -57,5 +57,14 @@ describe("contextBuilder", function() {
             contextBuilder.ensureObjectPathForFile(o, "index.html");
             assert.equal(1, o.index.a);
         });
+
+        it("sets nested paths", function() {
+            var o = {};
+            contextBuilder.ensureObjectPathForFile(o, "q/w/e/index.html");
+            assert.notStrictEqual(undefined, o.q);
+            assert.notStrictEqual(undefined, o.q.w);
+            assert.notStrictEqual(undefined, o.q.w.e);
+            assert.notStrictEqual(undefined, o.q.w.e.index);
+        });
     });
 });
