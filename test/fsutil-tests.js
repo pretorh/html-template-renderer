@@ -1,5 +1,6 @@
 var assert = require("assert");
 var fs = require("fs");
+var rimraf = require("rimraf");
 
 var fsutils = require("../lib/fsutils");
 
@@ -25,11 +26,7 @@ describe("fsutils", function() {
     });
 
     describe("ensureDirExists", function() {
-        beforeEach(function() {
-            var exists = fs.existsSync("test/made");
-            if (exists)
-                fs.rmdirSync("test/made");
-        });
+        beforeEach(removeTempTestDir);
 
         it("can make a directory", function() {
             fsutils.ensureDirExists("test/made");
@@ -53,4 +50,11 @@ describe("fsutils", function() {
             assert.equal(true, errored);
         });
     });
+
+    function removeTempTestDir(done) {
+        var exists = fs.existsSync("test/made");
+        if (!exists)
+            return done();
+        rimraf("test/made", done);
+    }
 });
