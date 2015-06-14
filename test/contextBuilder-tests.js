@@ -44,4 +44,18 @@ describe("contextBuilder", function() {
             assert.equal(true, /q\.w\.e\.index/.test(result), "expected path separator not found: " + result);
         });
     });
+
+    describe("ensureObjectPathForFile", function() {
+        it("set an empty object", function() {
+            var o = {};
+            contextBuilder.ensureObjectPathForFile(o, "index.html");
+            assert.notStrictEqual(undefined, o.index);
+        });
+
+        it("does not overwrite", function() {
+            var o = { index: { a: 1 } };
+            contextBuilder.ensureObjectPathForFile(o, "index.html");
+            assert.equal(1, o.index.a);
+        });
+    });
 });
