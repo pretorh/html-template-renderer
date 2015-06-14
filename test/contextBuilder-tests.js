@@ -66,5 +66,12 @@ describe("contextBuilder", function() {
             assert.notStrictEqual(undefined, o.q.w.e);
             assert.notStrictEqual(undefined, o.q.w.e.index);
         });
+
+        it("returns the last object's parent", function() {
+            var o = {};
+            var result = contextBuilder.ensureObjectPathForFile(o, "q/w/e/index.html");
+            assert.notStrictEqual(undefined, result.lastParent);
+            assert.notStrictEqual(undefined, result.lastParent.index);
+        });
     });
 });
