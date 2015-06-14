@@ -29,6 +29,11 @@ describe("render files", function() {
             assert.equal(-1, html.indexOf("}}"), "file not rendered");
             assert.notEqual(-1, html.indexOf("John Doe"), "file not rendered");
         });
+
+        it("should write correct file with root context", function() {
+            var html = fs.readFileSync(STATIC + "sub/about.html").toString();
+            assert.notEqual(-1, html.indexOf("Name: John Doe"), "file not rendered with @root");
+        });
     });
 
     function removeDirectory(done) {
