@@ -21,4 +21,15 @@ describe("contextBuilder", function() {
             assert.equal(1, o.sub.more.key);
         });
     });
+
+    describe("wrapInWithBaseOnFileName", function() {
+        it("returns handlebars wrapped text", function() {
+            var file = "index.html";
+            var inner = "text in middle";
+            var result = contextBuilder.wrapInWithBaseOnFileName(file, inner);
+            assert.equal(true, /^{{#with index/.test(result), "unexpected start: " + result);
+            assert.equal(true, /}}text in middle{{/.test(result), "unexpected middle: " + result);
+            assert.equal(true, /{{\/with}}$/.test(result), "unexpected end: " + result);
+        });
+    });
 });
