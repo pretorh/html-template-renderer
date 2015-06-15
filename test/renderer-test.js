@@ -9,6 +9,7 @@ describe("Renderer", function() {
     var options = {
         templateDir: PATH + "www/",
         contextDir: PATH + "context/",
+        nestedDir: PATH + "nested/",
         dist: STATIC
     };
 
@@ -21,6 +22,15 @@ describe("Renderer", function() {
         assert.notStrictEqual(undefined, renderer.rootContext);
         assert.equal("John Doe", renderer.rootContext.index.name);
         assert.equal(1, renderer.rootContext.sub.more.key);
+    });
+
+    describe("nested items", function() {
+        it("loaded when Renderer created", function() {
+            assert.notStrictEqual(undefined, renderer.nested);
+            assert.notStrictEqual(undefined, renderer.nested.comments);
+            assert.notStrictEqual(undefined, renderer.nested.comments.root);
+            assert.notStrictEqual(undefined, renderer.nested.comments.each);
+        });
     });
 
     describe("render", function() {

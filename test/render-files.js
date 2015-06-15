@@ -50,6 +50,7 @@ describe("render files", function() {
         htRenderer.render({
             templateDir: PATH + "www/",
             contextDir: PATH + "context/",
+            nestedDir: PATH + "nested/",
             dist: STATIC
         });
     }
