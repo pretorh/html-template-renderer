@@ -44,5 +44,11 @@ describe("render", function() {
                 assert.notEqual(-1, renderedContent.indexOf("John Doe"), "file not rendered");
             });
         });
+
+        it("can render for file with no context (ensures context based on path)", function() {
+            var result = renderer.render("sub/about.html");
+            var renderedContent = result.renderedContent;
+            assert.notEqual(-1, renderedContent.indexOf("Name: John Doe"));
+        });
     });
 });
