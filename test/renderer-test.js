@@ -1,4 +1,6 @@
 var assert = require("assert");
+var rimraf = require("rimraf");
+var fs = require("fs");
 var render = require("../lib/render.js");
 
 describe("render", function() {
@@ -49,6 +51,17 @@ describe("render", function() {
             var result = renderer.render("sub/about.html");
             var renderedContent = result.renderedContent;
             assert.notEqual(-1, renderedContent.indexOf("Name: John Doe"));
+        });
+
+        describe("does not save any files", function() {
+            before(function(done) {
+                rimraf(STATIC, done);
+            });
+
+            it("did not create the root output directory", function() {
+                var exists = fs.existsSync(STATIC);
+                assert.equal(false, exists, "directory wrongly created");
+            });
         });
     });
 });
