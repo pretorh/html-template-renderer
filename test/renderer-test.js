@@ -34,5 +34,13 @@ describe("render", function() {
         it("the output filename", function() {
             assert.equal(STATIC + "index.html", result.outputFile);
         });
+
+        it("the rendered content", function() {
+            var renderedContent = result.renderedContent;
+            assert.notStrictEqual(undefined, renderedContent);
+            assert.equal(-1, renderedContent.indexOf("{{"), "file not rendered");
+            assert.equal(-1, renderedContent.indexOf("}}"), "file not rendered");
+            assert.notEqual(-1, renderedContent.indexOf("John Doe"), "file not rendered");
+        });
     });
 });
