@@ -69,6 +69,10 @@ describe("fsutils", function() {
         it("adds trailing slash", function() {
             assert.equal("q/", fsutils.getWellFormedPath("q"));
         });
+
+        it("uses . if not defined", function() {
+            assert.equal("./", fsutils.getWellFormedPath());
+        });
     });
 
     function removeTempTestDir(done) {
