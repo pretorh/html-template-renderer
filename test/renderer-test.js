@@ -30,5 +30,9 @@ describe("render", function() {
         it("the input filename", function() {
             assert.equal("index.html", result.inputFile);
         });
+
+        it("the output filename", function() {
+            assert.equal(STATIC + "index.html", result.outputFile);
+        });
     });
 });
