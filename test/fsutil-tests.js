@@ -65,6 +65,10 @@ describe("fsutils", function() {
         it("returns path if well formed", function() {
             assert.equal("q/", fsutils.getWellFormedPath("q/"));
         });
+
+        it("adds trailing slash", function() {
+            assert.equal("q/", fsutils.getWellFormedPath("q"));
+        });
     });
 
     function removeTempTestDir(done) {
