@@ -21,26 +21,28 @@ describe("render", function() {
         assert.equal(1, renderer.rootContext.sub.more.key);
     });
 
-    describe("can render a file and returns", function() {
-        var result;
-        beforeEach(function() {
-            result = renderer.render("index.html");
-        });
+    describe("render", function() {
+        describe("returns", function() {
+            var result;
+            beforeEach(function() {
+                result = renderer.render("index.html");
+            });
 
-        it("the input filename", function() {
-            assert.equal("index.html", result.inputFile);
-        });
+            it("the input filename", function() {
+                assert.equal("index.html", result.inputFile);
+            });
 
-        it("the output filename", function() {
-            assert.equal(STATIC + "index.html", result.outputFile);
-        });
+            it("the output filename", function() {
+                assert.equal(STATIC + "index.html", result.outputFile);
+            });
 
-        it("the rendered content", function() {
-            var renderedContent = result.renderedContent;
-            assert.notStrictEqual(undefined, renderedContent);
-            assert.equal(-1, renderedContent.indexOf("{{"), "file not rendered");
-            assert.equal(-1, renderedContent.indexOf("}}"), "file not rendered");
-            assert.notEqual(-1, renderedContent.indexOf("John Doe"), "file not rendered");
+            it("the rendered content", function() {
+                var renderedContent = result.renderedContent;
+                assert.notStrictEqual(undefined, renderedContent);
+                assert.equal(-1, renderedContent.indexOf("{{"), "file not rendered");
+                assert.equal(-1, renderedContent.indexOf("}}"), "file not rendered");
+                assert.notEqual(-1, renderedContent.indexOf("John Doe"), "file not rendered");
+            });
         });
     });
 });
