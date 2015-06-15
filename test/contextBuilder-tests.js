@@ -90,4 +90,12 @@ describe("contextBuilder", function() {
             assert.equal("sub.more", contextBuilder.getObjectPathForFile("sub/more"));
         });
     });
+
+    describe("getValueByFieldPath", function() {
+        it("returns the value at the path", function() {
+            var o = { index: 1 };
+            var value = contextBuilder.getValueByFieldPath(o, "index");
+            assert.equal(1, value);
+        });
+    });
 });
