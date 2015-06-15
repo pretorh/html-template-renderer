@@ -61,6 +61,12 @@ describe("fsutils", function() {
         });
     });
 
+    describe("getWellFormedPath", function() {
+        it("returns path if well formed", function() {
+            assert.equal("q/", fsutils.getWellFormedPath("q/"));
+        });
+    });
+
     function removeTempTestDir(done) {
         var exists = fs.existsSync("test/made");
         if (!exists)
