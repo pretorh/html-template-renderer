@@ -47,6 +47,23 @@ describe("render", function() {
             });
         });
 
+        describe("works with full path of files", function() {
+            var result;
+            beforeEach(function() {
+                result = renderer.render(options.templateDir + "index.html");
+            });
+
+            it("the input filename", function() {
+                assert.equal("index.html", result.inputFile);
+            });
+
+            it("the rendered content", function() {
+                var renderedContent = result.renderedContent;
+                assert.notStrictEqual(undefined, renderedContent);
+                assert.notEqual(-1, renderedContent.indexOf("John Doe"), "file not rendered");
+            });
+        });
+
         it("can render for file with no context (ensures context based on path)", function() {
             var result = renderer.render("sub/about.html");
             var renderedContent = result.renderedContent;
