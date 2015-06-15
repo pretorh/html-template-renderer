@@ -2,6 +2,7 @@ var render = require("../").render;
 var getopt = require("node-getopt");
 
 var args = getopt.create([
+    ["h", "help"        , "display this help"],
     ["t", "template=DIR", "Template directory"],
     ["c", "context=DIR" , "Context directory"],
     ["n", "nested=DIR"  , "Nested directory"],
