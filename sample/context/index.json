@@ -1,4 +1,18 @@
 {
+    "comments": [
+        {
+            "message": "awesome",
+            "user": "John"
+        },
+        {
+            "message": "bored",
+            "user": "Jane"
+        },
+        {
+            "message": "123",
+            "user": "Test"
+        }
+    ],
     "complexity": "simple",
     "message": "Hello there!",
     "name": "John Doe"
