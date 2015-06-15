@@ -97,5 +97,11 @@ describe("contextBuilder", function() {
             var value = contextBuilder.getValueByFieldPath(o, "index");
             assert.equal(1, value);
         });
+
+        it("returns nested fields", function() {
+            var o = { sub: { key: 2 } };
+            var value = contextBuilder.getValueByFieldPath(o, "sub.key");
+            assert.equal(2, value);
+        });
     });
 });
