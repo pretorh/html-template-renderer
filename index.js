@@ -1,1 +1,2 @@
-module.exports.render = require("./lib/render");
+var render = require("./lib/render");
+module.exports.render = render.renderAndSave;
