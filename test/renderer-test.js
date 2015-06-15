@@ -1,9 +1,9 @@
 var assert = require("assert");
 var rimraf = require("rimraf");
 var fs = require("fs");
-var render = require("../lib/render.js");
+var Renderer = require("../").Renderer;
 
-describe("render", function() {
+describe("Renderer", function() {
     var PATH = __dirname + "/../sample/"
     var STATIC = PATH + "static/";
     var options = {
@@ -14,7 +14,7 @@ describe("render", function() {
 
     var renderer;
     beforeEach(function() {
-        renderer = new render.Renderer(options);
+        renderer = new Renderer(options);
     });
 
     it("setup with the root context", function() {
