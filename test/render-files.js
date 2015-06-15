@@ -34,6 +34,13 @@ describe("render files", function() {
             var html = fs.readFileSync(STATIC + "sub/about.html").toString();
             assert.notEqual(-1, html.indexOf("Name: John Doe"), "file not rendered with @root");
         });
+
+        it("should write nested views", function() {
+            var html = fs.readFileSync(STATIC + "index.html").toString();
+            assert.notEqual(-1, html.indexOf("awesome"), "comment(1) not rendered");
+            assert.notEqual(-1, html.indexOf("bored"), "comment(2) not rendered");
+            assert.notEqual(-1, html.indexOf("123"), "comment(3) not rendered");
+        });
     });
 
     function removeDirectory(done) {
