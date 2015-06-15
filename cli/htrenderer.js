@@ -1,16 +1,33 @@
 var render = require("../").render;
+var getopt = require("node-getopt");
 
-var args = process.argv.slice(2);
-if (args.length < 4) {
-    console.error("Need 4 params: <templateDir> <contextDir> <nestedDir> <distribution dir>");
-    process.exit(1);
+var args = getopt.create([
+    ["t", "template=DIR", "Template directory"],
+    ["c", "context=DIR" , "Context directory"],
+    ["n", "nested=DIR"  , "Nested directory"],
+    ["o", "output=DIR"  , "Output directory"],
+])
+.bindHelp()
+.parseSystem();
+var values = args.options;
+
+function testValueMissing(field) {
+    if (!values[field]) {
+        console.error("%s is required (--%s DIR)", field, field);
+        process.exit(1);
+    }
 }
 
+testValueMissing("template");
+testValueMissing("context");
+testValueMissing("nested");
+testValueMissing("output");
+
 var options = {
-    templateDir: args[0],
-    contextDir:  args[1],
-    nestedDir:   args[2],
-    dist:        args[3],
+    templateDir: values.template,
+    contextDir:  values.context,
+    nestedDir:   values.nested,
+    dist:        values.output,
 };
 
 render(options);
