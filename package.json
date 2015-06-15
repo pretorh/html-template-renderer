@@ -1,6 +1,6 @@
 {
   "name": "html-template-renderer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Render handlerbarjs templated html files into static html files",
   "main": "index.js",
   "scripts": {
