@@ -14,5 +14,8 @@
   "devDependencies": {
     "mocha": "2.2.5",
     "rimraf": "2.4.0"
+  },
+  "optionalDependencies": {
+    "node-getopt": "0.2.3"
   }
 }
