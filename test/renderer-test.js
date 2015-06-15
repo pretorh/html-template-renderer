@@ -36,6 +36,16 @@ describe("Renderer", function() {
             assert.equal("function", typeof(renderer.nested.comments.root));
             assert.equal("function", typeof(renderer.nested.comments.each));
         });
+
+        it("can be rendered", function() {
+            var result = renderer.render("index.html");
+            // John said awesome
+            assert.notEqual(-1, result.renderedContent.indexOf("John"));
+            assert.notEqual(-1, result.renderedContent.indexOf("awesome"));
+            // Jane said bored
+            assert.notEqual(-1, result.renderedContent.indexOf("Jane"));
+            assert.notEqual(-1, result.renderedContent.indexOf("bored"));
+        });
     });
 
     describe("render", function() {
