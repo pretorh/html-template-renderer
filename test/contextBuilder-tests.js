@@ -80,4 +80,14 @@ describe("contextBuilder", function() {
             assert.equal("index", result.name);
         });
     });
+
+    describe("getObjectPathForFile", function() {
+        it("replaces extention", function() {
+            assert.equal("index", contextBuilder.getObjectPathForFile("index.html"));
+        });
+
+        it("replaces path separators with dots", function() {
+            assert.equal("sub.more", contextBuilder.getObjectPathForFile("sub/more"));
+        });
+    });
 });
