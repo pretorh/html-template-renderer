@@ -14,4 +14,10 @@ describe("render", function() {
     beforeEach(function() {
         renderer = new render.Renderer(options);
     });
+
+    it("setup with the root context", function() {
+        assert.notStrictEqual(undefined, renderer.rootContext);
+        assert.equal("John Doe", renderer.rootContext.index.name);
+        assert.equal(1, renderer.rootContext.sub.more.key);
+    });
 });
