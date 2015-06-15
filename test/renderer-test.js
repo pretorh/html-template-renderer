@@ -31,6 +31,11 @@ describe("Renderer", function() {
             assert.notStrictEqual(undefined, renderer.nested.comments.root);
             assert.notStrictEqual(undefined, renderer.nested.comments.each);
         });
+
+        it("setup nested as functions", function() {
+            assert.equal("function", typeof(renderer.nested.comments.root));
+            assert.equal("function", typeof(renderer.nested.comments.each));
+        });
     });
 
     describe("render", function() {
