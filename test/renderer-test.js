@@ -20,4 +20,15 @@ describe("render", function() {
         assert.equal("John Doe", renderer.rootContext.index.name);
         assert.equal(1, renderer.rootContext.sub.more.key);
     });
+
+    describe("can render a file and returns", function() {
+        var result;
+        beforeEach(function() {
+            result = renderer.render("index.html");
+        });
+
+        it("the input filename", function() {
+            assert.equal("index.html", result.inputFile);
+        });
+    });
 });
